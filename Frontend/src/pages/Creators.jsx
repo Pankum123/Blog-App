@@ -22,7 +22,7 @@ function Creators() {
   }, []);
 
   return (
-    <div className="flex flex-wrap justify-center items-center my-20 bg-gray-100">
+    <div className="flex flex-wrap justify-center items-center my-10 mt-25 bg-gray-100">
       {creators.map((creator) => (
         <div
           key={creator._id}

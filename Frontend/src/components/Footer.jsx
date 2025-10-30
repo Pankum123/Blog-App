@@ -6,7 +6,7 @@ import { FaLinkedin } from "react-icons/fa";
 const Footer = () => {
   return (
     <>
-      <footer className="border py-10">
+      <footer className="border py-10 p-4">
         <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <div className=" text-center md:text-start">
             <h2 className="text-lg font-semibold mb-4">Products</h2>
@@ -122,12 +122,13 @@ const Footer = () => {
           </div>
         </div>
       </footer>
-      <div className=" container mx-auto  flex flex-col md:flex-row justify-between items-center">
+
+      <div className=" container mx-auto bg-white  flex flex-col md:flex-row justify-between items-center p-4">
         <div className="text-xl font-semibold hidden md:flex">
-          Cilli<span className="text-blue-500 font-bold">Blog</span>
+          Blog<span className="text-blue-500 font-bold">App</span>
         </div>
         <div className="text-gray-400 text-sm hidden md:flex">
-          <p>&copy; 2024 DhiWise PVT. LTD. All rights reserved</p>
+          <p>&copy; 2025 Tiku PVT. LTD. All rights reserved</p>
         </div>
         <div className="mt-4 md:mt-0 flex space-x-4">
           <a href="#">

@@ -33,7 +33,7 @@ function Navbar() {
 
   return (
     <>
-      <nav className=" shadow-lg px-4 py-2">
+      <nav className="fixed top-0 left-0 w-full  bg-white shadow-lg px-4 py-2 z-50">
         <div className="flex items-center justify-between container mx-auto">
           <div className="font-semibold text-xl">
             Blog<span className="text-blue-500">App</span>
@@ -61,7 +61,7 @@ function Navbar() {
               {show ? <IoCloseSharp size={24} /> : <AiOutlineMenu size={24} />}
             </div>
           </div>
-          <div className="hidden md:flex space-x-2">
+          <div className="flex space-x-2">
             {isAuthenticated && profile?.user?.role === "admin" ? (
               <Link
                 to="/dashboard"
