@@ -72,7 +72,7 @@ function UpdateBlog() {
       //     },
       //   }
       // );
-      const data = await updateBlog(id);
+      const data = await updateBlog(id, formData);
       console.log(data);
       toast.success(data.message || "Blog updated successfully");
       navigateTo("/");
