@@ -6,10 +6,14 @@ const createTokenAndSaveCookies = async (userId, res) => {
     expiresIn: "30d",
   });
   res.cookie("jwt", token, {
-    httpOnly: true, // Temporarily set to false for testing
-    secure: false,
-    sameSite: "lax",
-    path: "/", // Ensure the cookie is available throughout the site
+    // httpOnly: true, // Temporarily set to false for testing
+    // secure: false,
+    // sameSite: "lax",
+    // path: "/", // Ensure the cookie is available throughout the site
+    httpOnly: true,
+    secure: true,          // always true for HTTPS (Render uses HTTPS)
+    sameSite: "none",      // required for cross-site cookie (frontend ↔ backend)
+    path: "/",             // cookie available across all routes
   });
   await User.findByIdAndUpdate(userId, { token });
   return token;
