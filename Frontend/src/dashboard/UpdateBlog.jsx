@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { useNavigate, useParams } from "react-router-dom";
-import { getSingleBlog } from "../api";
+import { getSingleBlog, updateBlog } from "../api";
 
 function UpdateBlog() {
   const navigateTo = useNavigate();
@@ -62,16 +62,17 @@ function UpdateBlog() {
 
     formData.append("blogImage", blogImage);
     try {
-      const { data } = await axios.put(
-        `http://localhost:4001/api/blogs/update/${id}`,
-        formData,
-        {
-          withCredentials: true,
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        }
-      );
+      // const { data } = await axios.put(
+      //   `http://localhost:4001/api/blogs/update/${id}`,
+      //   formData,
+      //   {
+      //     withCredentials: true,
+      //     headers: {
+      //       "Content-Type": "multipart/form-data",
+      //     },
+      //   }
+      // );
+      const data = await updateBlog(id);
       console.log(data);
       toast.success(data.message || "Blog updated successfully");
       navigateTo("/");

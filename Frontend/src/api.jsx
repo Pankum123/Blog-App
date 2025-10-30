@@ -122,6 +122,13 @@ export const deleteBlog = async (id) => {
     return response;
 };
 
+export const updateBlog = async (id, formData) => {
+    const {data} = await api.put(
+      `/blogs/update/${id}`, 
+      formData
+    );
+    return data;
+};
 
 // Export axios instance if needed elsewhere
 export default api;
