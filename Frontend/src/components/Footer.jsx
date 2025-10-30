@@ -2,6 +2,7 @@ import React from "react";
 import { FaGithub } from "react-icons/fa";
 import { BsYoutube } from "react-icons/bs";
 import { FaLinkedin } from "react-icons/fa";
+import { Link} from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -12,24 +13,24 @@ const Footer = () => {
             <h2 className="text-lg font-semibold mb-4">Products</h2>
             <ul className="space-y-2">
               <li>
-                <a href="#" className="text-gray-400 hover:text-white">
+                <Link t0="#" className="text-gray-400 hover:text-blue-500">
                   Flutter
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-gray-400 hover:text-white">
+                <Link t0="#" className="text-gray-400 hover:text-blue-500">
                   React
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-gray-400 hover:text-white">
+                <Link t0="#" className="text-gray-400 hover:text-blue-500">
                   Android
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-gray-400 hover:text-white">
+                <Link t0="#" className="text-gray-400 hover:text-blue-500">
                   iOS
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -37,14 +38,14 @@ const Footer = () => {
             <h2 className="text-lg font-semibold mb-4">Design to code</h2>
             <ul className="space-y-2">
               <li>
-                <a href="#" className="text-gray-400 hover:text-white">
+                <Link to="#" className="text-gray-400 hover:text-blue-500">
                   Figma plugin
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-gray-400 hover:text-white">
+                <Link to="#" className="text-gray-400 hover:text-blue-500">
                   Templates
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -53,40 +54,40 @@ const Footer = () => {
             <h2 className="text-lg font-semibold mb-4">Comparison</h2>
             <ul className="space-y-2">
               <li>
-                <a href="#" className="text-gray-400 hover:text-white">
+                <Link to="#" className="text-gray-400 hover:text-blue-500">
                   DhiWise vs Anima
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-gray-400 hover:text-white">
+                <Link to="#" className="text-gray-400 hover:text-blue-500">
                   DhiWise vs Appsmith
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-gray-400 hover:text-white">
+                <Link to="#" className="text-gray-400 hover:text-blue-500">
                   DhiWise vs FlutterFlow
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-gray-400 hover:text-white">
+                <Link to="#" className="text-gray-400 hover:text-blue-500">
                   DhiWise vs Monday Hero
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-gray-400 hover:text-white">
+                <Link to="#" className="text-gray-400 hover:text-blue-500">
                   DhiWise vs Retool
-                </a>
+                </Link>
               </li>
 
               <li>
-                <a href="#" className="text-gray-400 hover:text-white">
+                <Link to="#" className="text-gray-400 hover:text-blue-500">
                   DhiWise vs Bubble
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-gray-400 hover:text-white">
+                <Link to="#" className="text-gray-400 hover:text-blue-500">
                   DhiWise vs Figma Dev Mode
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -94,29 +95,29 @@ const Footer = () => {
             <h2 className="text-lg font-semibold mb-4">Company</h2>
             <ul className="space-y-2">
               <li>
-                <a href="#" className="text-gray-400 hover:text-white">
+                <Link to="#" className="text-gray-400 hover:text-blue-500">
                   About Us
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-gray-400 hover:text-white">
+                <Link to="#" className="text-gray-400 hover:text-blue-500">
                   Contact Us
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-gray-400 hover:text-white">
+                <Link to="#" className="text-gray-400 hover:text-blue-500">
                   Career
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-gray-400 hover:text-white">
+                <Link to="#" className="text-gray-400 hover:text-blue-500">
                   Terms of Service
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-gray-400 hover:text-white">
+                <Link to="#" className="text-gray-400 hover:text-blue-500">
                   Privacy Policy
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -131,16 +132,16 @@ const Footer = () => {
           <p>&copy; 2025 Tiku PVT. LTD. All rights reserved</p>
         </div>
         <div className="mt-4 md:mt-0 flex space-x-4">
-          <a href="#">
+          <Link to="#">
             <FaGithub className="h-6" />
-          </a>
-          <a href="#">
+          </Link>
+          <Link to="#">
             <BsYoutube className="h-6" />
-          </a>
+          </Link>
 
-          <a href="#">
+          <Link to="#">
             <FaLinkedin className="h-6" />
-          </a>
+          </Link>
         </div>
       </div>
     </>
