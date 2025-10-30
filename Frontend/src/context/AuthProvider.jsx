@@ -26,7 +26,7 @@ export const AuthProvider = ({ children }) => {
           //   }
           // );
           const  data  = await getProfile();
-          setProfile(data);
+          setProfile(data.user);
           setIsAuthenticated(true);
         }
       } catch (error) {
