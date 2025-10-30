@@ -1,29 +1,51 @@
 import express from "express";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
+import cors from "cors";
 import fileUpload from "express-fileupload";
 import { v2 as cloudinary } from "cloudinary";
 import cookieParser from "cookie-parser";
 import userRoute from "./routes/user.route.js";
 import blogRoute from "./routes/blog.route.js";
 
-import cors from "cors";
+
 const app = express();
 dotenv.config();
 
-const port = process.env.PORT;
-const MONOGO_URL = process.env.MONOG_URI;
+// ----------------------
+// CORS middleware (before routes)
+// ----------------------
+const allowedOrigins = [
+  "http://localhost:3001",
+  process.env.FRONTEND_URL
+];
 
-//middleware
+app.use(cors({
+  origin: function(origin, callback) {
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.includes(origin)) {
+      return callback(null, true);
+    } else {
+      return callback(new Error("Not allowed by CORS"), false);
+    }
+  },
+  credentials: true,
+  methods: ["GET","POST","PUT","DELETE"]
+}));
+
 app.use(express.json());
 app.use(cookieParser());
-app.use(
-  cors({
-    origin: process.env.FRONTEND_URL,
-    credentials: true,
-    methods: ["GET", "POST", "PUT", "DELETE"],
-  })
-);
+
+// //middleware
+// app.use(express.json());
+// app.use(cookieParser());
+// app.use(
+//   cors({
+//     origin: process.env.FRONTEND_URL,
+//     credentials: true,
+//     methods: ["GET", "POST", "PUT", "DELETE"],
+//   })
+// );
 
 app.use(
   fileUpload({
@@ -32,13 +54,20 @@ app.use(
   })
 );
 
-// DB Code
-try {
-  mongoose.connect(MONOGO_URL);
-  console.log("Conntected to MonogDB");
-} catch (error) {
-  console.log(error);
-}
+// MongoDB connection
+const port = process.env.PORT || 4001;
+const MONOGO_URL = process.env.MONOG_URI;
+
+mongoose.connect(MONOGO_URL)
+  .then(() => console.log("Connected to MongoDB"))
+  .catch(err => console.log("MongoDB connection error:", err));
+
+// try {
+//   mongoose.connect(MONOGO_URL);
+//   console.log("Conntected to MonogDB");
+// } catch (error) {
+//   console.log(error);
+// }
 
 // defining routes
 app.use("/api/users", userRoute);

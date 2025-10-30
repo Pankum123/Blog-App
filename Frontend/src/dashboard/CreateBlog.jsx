@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import toast from "react-hot-toast";
+import { createBlog } from "../api";
 
 function CreateBlog() {
   const [title, setTitle] = useState("");
@@ -30,16 +31,17 @@ function CreateBlog() {
 
     formData.append("blogImage", blogImage);
     try {
-      const { data } = await axios.post(
-        "http://localhost:4001/api/blogs/create",
-        formData,
-        {
-          withCredentials: true,
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        }
-      );
+      // const { data } = await axios.post(
+      //   "/api/blogs/create",
+      //   formData,
+      //   {
+      //     withCredentials: true,
+      //     headers: {
+      //       "Content-Type": "multipart/form-data",
+      //     },
+      //   }
+      // );
+      const data = await createBlog(formData);
       console.log(data);
       toast.success(data.message || "User registered successfully");
       setTitle("");

@@ -5,21 +5,24 @@ import { IoCloseSharp } from "react-icons/io5";
 import { useAuth } from "../context/AuthProvider";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { logoutUser } from "../api";
 
 function Navbar() {
   const [show, setShow] = useState(false);
 
   const { profile, isAuthenticated, setIsAuthenticated } = useAuth();
   console.log(profile?.user);
+  console.log("admin ha ya nahi navbar : ",profile?.user)
   const navigateTo = useNavigate();
 
   const handleLogout = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await axios.get(
-        "http://localhost:4001/api/users/logout",
-        { withCredentials: true }
-      );
+      // const { data } = await axios.get(
+      //   "http://localhost:4001/api/users/logout",
+      //   { withCredentials: true }
+      // );
+      const data = await logoutUser();
       console.log(data);
       localStorage.removeItem("jwt"); // deleting token in localStorage so that if user logged out it will goes to login page
       toast.success(data.message);

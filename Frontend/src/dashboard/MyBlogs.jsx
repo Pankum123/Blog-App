@@ -2,16 +2,18 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
+import { deleteBlog, getMyBlogs } from "../api";
 
 function MyBlogs() {
   const [myBlogs, setMyBlogs] = useState([]);
   useEffect(() => {
     const fetchMyBlogs = async () => {
       try {
-        const { data } = await axios.get(
-          "http://localhost:4001/api/blogs/my-blog",
-          { withCredentials: true }
-        );
+        // const { data } = await axios.get(
+        //   "http://localhost:4001/api/blogs/my-blog",
+        //   { withCredentials: true }
+        // );
+        const data =await getMyBlogs();
         console.log(data);
         setMyBlogs(data);
       } catch (error) {
@@ -22,17 +24,28 @@ function MyBlogs() {
   }, []);
 
   const handleDelete = async (id) => {
-    await axios
-      .delete(`http://localhost:4001/api/blogs/delete/${id}`, {
-        withCredentials: true,
-      })
-      .then((res) => {
+    // await axios
+    //   .delete(`http://localhost:4001/api/blogs/delete/${id}`, {
+    //     withCredentials: true,
+    //   })
+    //   .then((res) => {
+    //     toast.success(res.data.message || "Blog deleted successfully");
+    //     setMyBlogs((value) => value.filter((blog) => blog._id !== id));
+    //   })
+    //   .catch((error) => {
+    //     toast.error(error.response.message || "Failed to delete blog");
+    //   });
+    try{
+      const res = await deleteBlog(id);
+      if(res){
         toast.success(res.data.message || "Blog deleted successfully");
         setMyBlogs((value) => value.filter((blog) => blog._id !== id));
-      })
-      .catch((error) => {
-        toast.error(error.response.message || "Failed to delete blog");
-      });
+      }
+    }
+    catch(error){
+      console.log(error);
+      toast.error(error.response.message || "Failed to delete blog");
+    }
   };
   return (
     <div>

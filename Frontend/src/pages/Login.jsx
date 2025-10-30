@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import toast from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthProvider";
+import { loginUser } from "../api";
 
 function Login() {
   const { isAuthenticated, setIsAuthenticated, setProfile } = useAuth();
@@ -16,21 +17,22 @@ function Login() {
     e.preventDefault();
 
     try {
-      const { data } = await axios.post(
-        "http://localhost:4001/api/users/login",
-        { email, password, role },
-        {
-          withCredentials: true,
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
-      console.log(data);
+      // const { data } = await axios.post(
+      //   "/api/users/login",
+      //   { email, password, role },
+      //   {
+      //     withCredentials: true,
+      //     headers: {
+      //       "Content-Type": "application/json",
+      //     },
+      //   }
+      // );
+      const data = await loginUser({ email, password, role })
+      console.log("login karne ke bad profile :",data);
       // Store the token in localStorage
       localStorage.setItem("jwt", data.token); // storing token in localStorage so that if user refreshed the page it will not redirect again in login
       toast.success(data.message || "User Logined successfully", {
-        duration: 3000,
+        duration: 2000,
       });
       setProfile(data);
       setIsAuthenticated(true);
@@ -108,3 +110,4 @@ function Login() {
 }
 
 export default Login;
+

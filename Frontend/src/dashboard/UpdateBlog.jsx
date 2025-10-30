@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { useNavigate, useParams } from "react-router-dom";
+import { getSingleBlog } from "../api";
 
 function UpdateBlog() {
   const navigateTo = useNavigate();
@@ -28,16 +29,17 @@ function UpdateBlog() {
   useEffect(() => {
     const fetchBlog = async () => {
       try {
-        const { data } = await axios.get(
-          `http://localhost:4001/api/blogs/single-blog/${id}`,
+        // const { data } = await axios.get(
+        //   `http://localhost:4001/api/blogs/single-blog/${id}`,
 
-          {
-            withCredentials: true,
-            headers: {
-              "Content-Type": "multipart/form-data",
-            },
-          }
-        );
+        //   {
+        //     withCredentials: true,
+        //     headers: {
+        //       "Content-Type": "multipart/form-data",
+        //     },
+        //   }
+        // );
+        const data = await getSingleBlog(id);
         console.log(data);
         setTitle(data?.title);
         setCategory(data?.category);

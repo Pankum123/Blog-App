@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import toast from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthProvider";
+import { registerUser } from "../api";
+
 
 function Register() {
   const { isAuthenticated, setIsAuthenticated, setProfile } = useAuth();
@@ -40,17 +42,20 @@ function Register() {
     formData.append("education", education);
     formData.append("photo", photo);
     try {
-      const { data } = await axios.post(
-        "http://localhost:4001/api/users/register",
-        formData,
-        {
-          withCredentials: true,
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        }
-      );
-      console.log(data);
+      // const { data } = await axios.post(
+      //   "/api/users/register",
+      //   formData,
+      //   {
+      //     withCredentials: true,
+      //     headers: {
+      //       "Content-Type": "multipart/form-data",
+      //     },
+      //   }
+      // );
+
+      const data =await registerUser(formData);
+
+      console.log("are data aa gya kya : ",data);
       localStorage.setItem("jwt", data.token); // storing token in localStorage so that if user refreshed the page it will not redirect again in login
       toast.success(data.message || "User registered successfully");
       setProfile(data);

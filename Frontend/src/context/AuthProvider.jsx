@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { createContext, useContext, useEffect, useState } from "react";
+import { getAllBlogs, getProfile } from "../api";
 
 export const AuthContext = createContext();
 
@@ -15,17 +16,17 @@ export const AuthProvider = ({ children }) => {
         let token = localStorage.getItem("jwt"); // Retrieve the token directly from the localStorage (Go to login.jsx)
         console.log(token);
         if (token) {
-          const { data } = await axios.get(
-            "http://localhost:4001/api/users/my-profile",
-            {
-              withCredentials: true,
-              headers: {
-                "Content-Type": "application/json",
-              },
-            }
-          );
-          console.log(data.user);
-          setProfile(data.user);
+          // const { data } = await axios.get(
+          //   "/api/users/my-profile",
+          //   {
+          //     withCredentials: true,
+          //     headers: {
+          //       "Content-Type": "application/json",
+          //     },
+          //   }
+          // );
+          const  data  = await getProfile();
+          setProfile(data);
           setIsAuthenticated(true);
         }
       } catch (error) {
@@ -35,11 +36,12 @@ export const AuthProvider = ({ children }) => {
 
     const fetchBlogs = async () => {
       try {
-        const { data } = await axios.get(
-          "http://localhost:4001/api/blogs/all-blogs",
-          { withCredentials: true }
-        );
-        console.log(data);
+        // const { data } = await axios.get(
+        //   "/api/blogs/all-blogs",
+        //   { withCredentials: true }
+        // );
+        const data = await getAllBlogs();
+        console.log("all blog aa gya : ",data);
         setBlogs(data);
       } catch (error) {
         console.log(error);
