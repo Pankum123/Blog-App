@@ -41,7 +41,7 @@ The app is ideal for personal portfolios, tech bloggers, or anyone learning full
 
 🌐 Live Demo: https://blog-app-pankaj.onrender.com
 
-💻 GitHub: https://github.com/Pankum123
+💻 GitHub: https://github.com/Pankum123/Blog-App
 
 ✨ Video: https://drive.google.com/file/d/11_jmV6_GF7MGuN7QF1WrnARTmA9BH3Qr/view?usp=sharing
 
