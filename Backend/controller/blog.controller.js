@@ -97,3 +97,4 @@ export const updateBlog = async (req, res) => {
   }
   res.status(200).json(updatedBlog);
 };
+

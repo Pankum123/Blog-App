@@ -59,8 +59,10 @@ function UpdateBlog() {
     formData.append("title", title);
     formData.append("category", category);
     formData.append("about", about);
-
-    formData.append("blogImage", blogImage);
+    if (blogImage instanceof File) {
+      formData.append("blogImage", blogImage);
+    }
+    // formData.append("blogImage", blogImage);
     try {
       // const { data } = await axios.put(
       //   `http://localhost:4001/api/blogs/update/${id}`,
